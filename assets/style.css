@@ -85,18 +85,6 @@ body {
     padding-top: 25px;
 } */
 
-.eventPic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    /* position: relative;
-    float: left; */
-    max-height: 55px;
-    max-width: 150px;
-    /* border-top-left-radius: 6px; */
-}
-
 .cards {
     border: solid rgb(71, 71, 71) 3px;
     /* position: relative; */
@@ -113,6 +101,20 @@ body {
     margin-left: auto;
     margin-right: auto;
 } 
+
+.eventPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    /* position: relative;
+    float: left; */
+    max-height: 55px;
+    max-width: 150px;
+    /* border-top-left-radius: 6px; */
+}
+
+
 
 @media only screen and (max-width: 576px) {
     #headerPic {
@@ -268,4 +270,5 @@ body {
     font-weight: bold;
     font-size: large;
 }
+
 

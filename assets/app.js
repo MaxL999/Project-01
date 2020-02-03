@@ -223,13 +223,13 @@ $(document).ready(function () {
     // Checks if state is inputed
     if ($("#state").val() === "") {
       alert("location needed")
-      return false;
-    } else {
-      // empties result card div
+      return false;   
+    } else {   
+      // empties result card div    
       $("#resultCard").empty();
-      // runs loaderBounce function
-      loaderBounce();
-      // Storing the search queries        
+      // runs loaderBounce function        
+      loaderBounce();      
+      // Storing the search queries             
       var submitData = {        
         category: $("#category option:selected").text().trim(),   
         location: $("#state").val().trim(),  

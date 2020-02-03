@@ -20,7 +20,7 @@ $(document).ready(function () {
   }
 
 
-  // These variables hold will feed data to the querlyURL. The variable values will come from user input. Currently some of the variables hold temporary data for testing purposes.
+  // These variables hold will feed data to the querlyURL. The variable values come from user input.
 
   var API_KEY = "vMvwtd4qCcNr8hZL";
   var proxyURL = "https://cors-anywhere.herokuapp.com/"
@@ -33,7 +33,7 @@ $(document).ready(function () {
   }
 
   function searchEvents(data) {
-    // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection.
+    // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection errors.
     var queryURL = proxyURL + createQueryURL(data);
     console.log(queryURL);
     $.ajax({
@@ -43,13 +43,14 @@ $(document).ready(function () {
     }).then(function (response) {
       $("#resultCard").empty();
 
-      // first the entire response must be parsed from its JSON origin
+      // First the entire response must be parsed from the JSON origin
       temp = JSON.parse(response)
-      // then we can grab the important event information from the nest
-      eventData = temp.events.event
-      console.log(eventData)
+      // Event information is stored in a variable called eventData
+      var eventData = temp.events.event
+      // console.log(eventData)
       // Dynamically inserts event info into web page
-
+      
+      // We iterate throught the JSON data
       for (var i = 0; i < eventData.length; i++) {
 
         var imgSRC;
@@ -91,7 +92,11 @@ $(document).ready(function () {
         // create facebook share button
         newShareButton = $("<div>")
         newShareButton.addClass("fb-share-button")
-        newShareButton.attr({ "data-href": eventData[i].url, "data-layout": "button", "data-size": "large" })
+        newShareButton.attr({
+          "data-href": eventData[i].url,
+          "data-layout": "button",
+          "data-size": "large"
+        })
         shareAnchor = $("<a>")
         shareAnchor.attr("target", "_blank")
         var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + eventData[i].url

@@ -94,7 +94,9 @@ body {
     width: auto;
 }
 
-
+/* .eventTitle {
+    padding-top: 25px;
+} */
 
 .eventPic {
     display: block;
@@ -115,12 +117,16 @@ body {
     }
    }
 
-/* .eventTitle {
-    padding-top: 25px;
-} */
+  /* Modal Content */
+  .modal-content {
+    background-color: #dbdbdb;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
 
-
-/* The Modal (background) */
+  /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -134,15 +140,6 @@ body {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
   }
   
   /* The Close Button */
@@ -164,6 +161,16 @@ body {
     margin: 20px;   
 }
 
+.button:before,
+.button:after {
+    border: 0 solid transparent;
+    transition: all 0.25s;
+    content: '';
+    height: 24px;
+    position: absolute;
+    width: 24px;
+}
+
 .button {
     background-color: #2199e8;
     border: none;
@@ -176,17 +183,6 @@ body {
     margin-right: 5px;
     border-radius: 5px;
 }
-
-.button:before,
-.button:after {
-    border: 0 solid transparent;
-    transition: all 0.25s;
-    content: '';
-    height: 24px;
-    position: absolute;
-    width: 24px;
-}
-
 
 .button:before {
     border-top: 2px solid #2199e8;
@@ -239,11 +235,6 @@ body {
     animation-delay: 0.2s;
   }
  
-
-  .bouncing-loader > div:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
   .bouncing-loader > div {
     width: 1rem;
     height: 1rem;
@@ -251,6 +242,10 @@ body {
     background: #8385aa;
     border-radius: 50%;
     animation: bouncing-loader 0.6s infinite alternate;
+  }
+
+  .bouncing-loader > div:nth-child(3) {
+    animation-delay: 0.4s;
   }
 
   .searchParam {

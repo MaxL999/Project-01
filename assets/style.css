@@ -24,6 +24,7 @@ body {
 .custom-scrollbar {
     height: 510px;
     overflow-y: scroll;
+    background-color: #849eaf;
 }
 
 /* To style the document scrollbar, remove `.custom-scrollbar` */
@@ -93,7 +94,9 @@ body {
     width: auto;
 }
 
-
+/* .eventTitle {
+    padding-top: 25px;
+} */
 
 .eventPic {
     display: block;
@@ -107,26 +110,23 @@ body {
     /* border-top-left-radius: 6px; */
 }
 
-.map {
-    /* border-radius: 4px;
-    padding: 2px;
-    margin-bottom: 5px; */
-    color: #2199e8;
-    border-radius: 5px;
-    margin: 0 0;
-}
-
-/* .eventTitle {
-    padding-top: 25px;
-} */
-
 @media only screen and (max-width: 576px) {
     #headerPic {
         max-width: 250px;
         margin-top: -45px;
     }
    }
-/* The Modal (background) */
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #dbdbdb;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -134,20 +134,12 @@ body {
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
+    right: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
   }
   
   /* The Close Button */
@@ -169,15 +161,6 @@ body {
     margin: 20px;   
 }
 
-.button {
-    background-color: #2199e8;
-    border: none;
-    color: #ffffff;
-    outline: none;
-    padding: 12px 40px 10px;
-    position: relative;
-    margin-bottom: 10px 0;
-}
 .button:before,
 .button:after {
     border: 0 solid transparent;
@@ -187,19 +170,36 @@ body {
     position: absolute;
     width: 24px;
 }
+
+.button {
+    background-color: #2199e8;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    padding: 12px 40px 10px;
+    position: relative;
+    margin-bottom: 10px 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
 .button:before {
     border-top: 2px solid #2199e8;
     left: 0px;
     top: -5px;
 }
+
+.button:hover {
+    background-color: #2199e8;
+}
+
 .button:after {
     border-bottom: 2px solid #2199e8;
     bottom: -5px;
     right: 0px;
 }
-.button:hover {
-    background-color: #2199e8;
-}
+
 .button:hover:before,
 .button:hover:after {
     height: 100%;
@@ -231,6 +231,10 @@ body {
     display: flex;
     justify-content: center;
   }
+  .bouncing-loader > div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+ 
   .bouncing-loader > div {
     width: 1rem;
     height: 1rem;
@@ -239,16 +243,9 @@ body {
     border-radius: 50%;
     animation: bouncing-loader 0.6s infinite alternate;
   }
-  .bouncing-loader > div:nth-child(2) {
-    animation-delay: 0.2s;
-  }
+
   .bouncing-loader > div:nth-child(3) {
     animation-delay: 0.4s;
-  }
-
-  #topSearch {
-      font-weight: bold;
-      font-size: large;
   }
 
   .searchParam {
@@ -258,8 +255,13 @@ body {
   }
 
   .fb-share-button {
-      margin-top: 5px;
-      margin-bottom: 10px;
-      margin-left: -10px;
-      margin-right: 0;
-  }
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 0;
+}
+
+  #topSearch {
+    font-weight: bold;
+    font-size: large;
+}
+

@@ -3,7 +3,7 @@
 }
 
 #map {
-    height: 400px;
+    height: 500px;
     width: 100%;
 } 
 
@@ -250,6 +250,7 @@
       margin-top: -15px;
       margin-bottom: 5px;
   }
+
   .fb-share-button {
       margin-top: 5px;
       margin-bottom: 10px;

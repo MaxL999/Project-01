@@ -112,7 +112,7 @@ $(document).ready(function () {
         newURL.text("Event Info")
         newURL.addClass("button primary")
 
-        // creates map button to address
+        // Creates div holder for Google map, initially does not display
         newMap = $("<div>")
         newMap.attr("id", "map")
         newMap.attr("style", "display:none")
@@ -229,17 +229,17 @@ $(document).ready(function () {
       $("#resultCard").empty();
       // runs loaderBounce function
       loaderBounce();
-      // Storing the search queries
-      var submitData = {
-        category: $("#category option:selected").text().trim(),
-        location: $("#state").val().trim(),
-        radius: $("#radius").val().trim(),
+      // Storing the search queries        
+      var submitData = {        
+        category: $("#category option:selected").text().trim(),   
+        location: $("#state").val().trim(),  
+        radius: $("#radius").val().trim(),   
       }
 
-      // Running the searchEvents function(passing search queries as arguments)
+      // Running the searchEvents function(passing search queries as arguments)      
       searchEvents(submitData);
 
-      // finds the chosen catagory and updates firebase      
+      // finds the chosen catagory and updates firebase           
       if (submitData.category === "Food") {
         Food++
         database.ref().update({

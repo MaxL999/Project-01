@@ -308,23 +308,23 @@ $(document).ready(function () {
     // finds highest number of all categories and then finds it and adds what people find most interseting into the page
     var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
     if (pplSearch === Food) {
-      $("#favSearch").html("The top searched category is: Food")
+      $("#topSearch").html("The top searched category is: Food")
     } else if (pplSearch === Music) {
-      $("#favSearch").html("The top searched category is: Music")
+      $("#topSearch").html("The top searched category is: Music")
     } else if (pplSearch === Comedy) {
-      $("#favSearch").html("The top searched category is: Comedy")
+      $("#topSearch").html("The top searched category is: Comedy")
     } else if (pplSearch === Literature) {
-      $("#favSearch").html("The top searched category is: Literature")
+      $("#topSearch").html("The top searched category is: Literature")
     } else if (pplSearch === Art) {
-      $("#favSearch").html("The top searched category is: Art")
+      $("#topSearch").html("The top searched category is: Art")
     } else if (pplSearch === Carnival) {
-      $("#favSearch").html("The top searched category is: Carnival")
+      $("#topSearch").html("The top searched category is: Carnival")
     } else if (pplSearch === Cultural) {
-      $("#favSearch").html("The top searched category is: Cultural")
+      $("#topSearch").html("The top searched category is: Cultural")
     } else if (pplSearch === TradeShow) {
-      $("#favSearch").html("The top searched category is: Trade shows")
+      $("#topSearch").html("The top searched category is: Trade shows")
     } else if (pplSearch === Sports) {
-      $("#favSearch").html("The top searched category is: Sports")
+      $("#topSearch").html("The top searched category is: Sports")
     } else {
     //  console.log("highest search record error")
     }

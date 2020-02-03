@@ -314,7 +314,7 @@ $(document).ready(function () {
     } else if (pplSearch === Comedy) {
       $("#favSearch").html("The top searched category is: Comedy")
     } else if (pplSearch === Literature) {
-      $("#favSearch").html("The top searched category is: Literatur")
+      $("#favSearch").html("The top searched category is: Literature")
     } else if (pplSearch === Art) {
       $("#favSearch").html("The top searched category is: Art")
     } else if (pplSearch === Carnival) {

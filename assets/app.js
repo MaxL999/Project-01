@@ -294,7 +294,7 @@ $(document).ready(function () {
 
   // when the page bootsup/loads/value changes the local variables update
   database.ref().on("value", function (snapshot) {
-    console.log(snapshot.val())
+   //  console.log(snapshot.val())
     Food = snapshot.val().food
     Music = snapshot.val().music
     Comedy = snapshot.val().comedy
@@ -308,23 +308,23 @@ $(document).ready(function () {
     // finds highest number of all categories and then finds it and adds what people find most interseting into the page
     var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
     if (pplSearch === Food) {
-      $("#topSearch").html("The top searched category is: Food")
+      $("#favSearch").html("The top searched category is: Food")
     } else if (pplSearch === Music) {
-      $("#topSearch").html("The top searched category is: Music")
+      $("#favSearch").html("The top searched category is: Music")
     } else if (pplSearch === Comedy) {
-      $("#topSearch").html("The top searched category is: Comedy")
+      $("#favSearch").html("The top searched category is: Comedy")
     } else if (pplSearch === Literature) {
-      $("#topSearch").html("The top searched category is: Literature")
+      $("#favSearch").html("The top searched category is: Literature")
     } else if (pplSearch === Art) {
-      $("#topSearch").html("The top searched category is: Art")
+      $("#favSearch").html("The top searched category is: Art")
     } else if (pplSearch === Carnival) {
-      $("#topSearch").html("The top searched category is: Carnival")
+      $("#favSearch").html("The top searched category is: Carnival")
     } else if (pplSearch === Cultural) {
-      $("#topSearch").html("The top searched category is: Cultural")
+      $("#favSearch").html("The top searched category is: Cultural")
     } else if (pplSearch === TradeShow) {
-      $("#topSearch").html("The top searched category is: Trade shows")
+      $("#favSearch").html("The top searched category is: Trade shows")
     } else if (pplSearch === Sports) {
-      $("#topSearch").html("The top searched category is: Sports")
+      $("#favSearch").html("The top searched category is: Sports")
     } else {
     //  console.log("highest search record error")
     }

@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
 #map {
     height: 500px;
     width: 100%;
@@ -109,6 +113,7 @@
     margin-bottom: 5px; */
     color: #2199e8;
     border-radius: 5px;
+    margin: 0 0;
 }
 
 /* .eventTitle {
@@ -161,7 +166,7 @@
   }
 
 .btn {
-    margin: 20px;
+    margin: 20px;   
 }
 
 .button {
@@ -243,6 +248,7 @@
 
   #favSearch {
       font-weight: bold;
+      font-size: large;
   }
 
   .searchParam {

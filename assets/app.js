@@ -99,6 +99,7 @@ $(document).ready(function () {
         })
         shareAnchor = $("<a>")
         shareAnchor.attr("target", "_blank")
+        // Creates link to share to facebook which is fed from event JSON
         var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + eventData[i].url
         shareAnchor.attr("href", shareURL)
         shareAnchor.addClass("fb-xfbml-parse-ignore")
@@ -307,23 +308,23 @@ $(document).ready(function () {
     // finds highest number of all categories and then finds it and adds what people find most interseting into the page
     var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
     if (pplSearch === Food) {
-      $("#favSearch").html("People enjoy searching for food")
+      $("#favSearch").html("The top searched category is: Food")
     } else if (pplSearch === Music) {
-      $("#favSearch").html("People enjoy searching for music")
+      $("#favSearch").html("The top searched category is: Music")
     } else if (pplSearch === Comedy) {
-      $("#favSearch").html("People enjoy searching for comedy")
+      $("#favSearch").html("The top searched category is: Comedy")
     } else if (pplSearch === Literature) {
-      $("#favSearch").html("People enjoy searching for literatur")
+      $("#favSearch").html("The top searched category is: Literatur")
     } else if (pplSearch === Art) {
-      $("#favSearch").html("People enjoy searching for art")
+      $("#favSearch").html("The top searched category is: Art")
     } else if (pplSearch === Carnival) {
-      $("#favSearch").html("People enjoy searching for carnival")
+      $("#favSearch").html("The top searched category is: Carnival")
     } else if (pplSearch === Cultural) {
-      $("#favSearch").html("People enjoy searching for cultural")
+      $("#favSearch").html("The top searched category is: Cultural")
     } else if (pplSearch === TradeShow) {
-      $("#favSearch").html("People enjoy searching for trade shows")
+      $("#favSearch").html("The top searched category is: Trade shows")
     } else if (pplSearch === Sports) {
-      $("#favSearch").html("People enjoy searching for sports")
+      $("#favSearch").html("The top searched category is: Sports")
     } else {
     //  console.log("highest search record error")
     }

@@ -23,13 +23,17 @@ body {
 
 .off-canvas-wrapper,
 .off-canvas-wrapper-inner {
-    max-height: 100%;
+    height: 100%;
 }
 
 .custom-scrollbar {
     height: 510px;
     overflow-y: scroll;
     background-color: #849eaf;
+}
+
+.off-canvas-content {
+    height: 100%;
 }
 
 /* To style the document scrollbar, remove `.custom-scrollbar` */
@@ -55,6 +59,10 @@ body {
     margin-right: auto;
     margin-top: -65px;
     margin-bottom: -130px;
+}
+
+select, input {
+    margin-top: 5px;
 }
 
 .jumbotron {
@@ -122,14 +130,8 @@ body {
     }
 }
 
-
-/* Modal Content */
-.modal-content {
-    background-color: #dbdbdb;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+#submitSearch {
+    margin-top: 18px;
 }
 
 /* The Modal (background) */
@@ -157,6 +159,16 @@ body {
     /* Black w/ opacity */
 }
 
+/* Modal Content */
+.modal-content {
+    background-color: #dbdbdb;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -174,6 +186,7 @@ body {
 
 .btn {
     margin: 20px;
+    padding: 0;
 }
 
 .button:before,
@@ -231,6 +244,8 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #onLoadH2 {
@@ -268,7 +283,7 @@ body {
 
 .searchParam {
     font-size: 24px;
-    margin-top: -15px;
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -285,4 +300,8 @@ body {
 #favSearch {
     font-weight: bold;
     font-size: large;
+}
+
+#resultCard {
+    height: 100%;
 }

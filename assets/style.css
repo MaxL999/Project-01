@@ -11,6 +11,15 @@ body {
     font-family: 'PT Sans', sans-serif;
 }
 
+.thumbnail {
+    margin-top: 40px;
+}
+
+.unBoreMe {
+    font-weight: bold;
+    margin-top: 25px;
+}
+
 #map {
     height: 500px;
     width: 100%;
@@ -61,7 +70,8 @@ body {
     margin-bottom: -130px;
 }
 
-select, input {
+select,
+input {
     margin-top: 5px;
 }
 
@@ -135,15 +145,6 @@ select, input {
     margin-top: 18px;
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #dbdbdb;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
 /* The Modal (background) */
 .modal {
     display: none;
@@ -169,6 +170,15 @@ select, input {
     /* Black w/ opacity */
 }
 
+/* Modal Content */
+.modal-content {
+    background-color: #dbdbdb;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -189,16 +199,6 @@ select, input {
     padding: 0;
 }
 
-.button:before,
-.button:after {
-    border: 0 solid transparent;
-    transition: all 0.25s;
-    content: '';
-    height: 24px;
-    position: absolute;
-    width: 24px;
-}
-
 .button {
     background-color: #2199e8;
     border: none;
@@ -210,6 +210,16 @@ select, input {
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 5px;
+}
+
+.button:before,
+.button:after {
+    border: 0 solid transparent;
+    transition: all 0.25s;
+    content: '';
+    height: 24px;
+    position: absolute;
+    width: 24px;
 }
 
 .button:before {
@@ -300,7 +310,8 @@ select, input {
 
 #favSearch {
     font-weight: bold;
-    font-size: large;
+    font-size: 2rem;
+    margin-top: 70px;
 }
 
 #resultCard {

@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -14,9 +15,9 @@ body {
     height: 500px;
     width: 100%;
     position: relative;
-} 
+}
 
-.row  {
+.row {
     height: 100%;
 }
 
@@ -68,9 +69,9 @@ body {
     max-width: 800px;
 }
 
-.truncate-text:hover{
-    overflow: visible; 
-    white-space: normal; 
+.truncate-text:hover {
+    overflow: visible;
+    white-space: normal;
     width: auto;
 }
 
@@ -84,6 +85,18 @@ body {
 /* .eventTitle {
     padding-top: 25px;
 } */
+
+.eventPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    /* position: relative;
+    float: left; */
+    max-height: 55px;
+    max-width: 150px;
+    /* border-top-left-radius: 6px; */
+}
 
 .cards {
     border: solid rgb(71, 71, 71) 3px;
@@ -100,71 +113,67 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-} 
-
-.eventPic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    /* position: relative;
-    float: left; */
-    max-height: 55px;
-    max-width: 150px;
-    /* border-top-left-radius: 6px; */
 }
-
-
 
 @media only screen and (max-width: 576px) {
     #headerPic {
         max-width: 250px;
         margin-top: -45px;
     }
-   }
+}
 
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
 
-  /* Modal Content */
-  .modal-content {
+/* Modal Content */
+.modal-content {
     background-color: #dbdbdb;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
 .btn {
-    margin: 20px;   
+    margin: 20px;
 }
 
 .button:before,
@@ -213,7 +222,8 @@ body {
 }
 
 #onLoad {
-    margin-bottom: 40px;
+    margin-bottom: 0px;
+    height: 100%;
 }
 
 #spyGlass {
@@ -229,46 +239,50 @@ body {
 
 @keyframes bouncing-loader {
     to {
-      opacity: 0.1;
-      transform: translate3d(0, -1rem, 0);
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
     }
-  }
-  .bouncing-loader {
+}
+
+.bouncing-loader {
     display: flex;
     justify-content: center;
-  }
-  .bouncing-loader > div:nth-child(2) {
+}
+
+.bouncing-loader>div:nth-child(2) {
     animation-delay: 0.2s;
-  }
- 
-  .bouncing-loader > div {
+}
+
+.bouncing-loader>div {
     width: 1rem;
     height: 1rem;
     margin: 3rem 0.2rem;
     background: #8385aa;
     border-radius: 50%;
     animation: bouncing-loader 0.6s infinite alternate;
-  }
+}
 
-  .bouncing-loader > div:nth-child(3) {
+.bouncing-loader>div:nth-child(3) {
     animation-delay: 0.4s;
-  }
+}
 
-  .searchParam {
-      font-size: 24px;
-      margin-top: -15px;
-      margin-bottom: 5px;
-  }
+.searchParam {
+    font-size: 24px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+}
 
-  .fb-share-button {
+.callout {
+    margin-bottom: 0px;
+}
+
+.fb-share-button {
     margin-top: 5px;
     margin-bottom: 10px;
     margin-right: 0;
 }
 
-  #favSearch {
+#favSearch {
     font-weight: bold;
     font-size: large;
 }
-
-

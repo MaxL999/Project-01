@@ -39,7 +39,7 @@ body {
 /* To style the document scrollbar, remove `.custom-scrollbar` */
 
 .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -94,19 +94,6 @@ select, input {
     padding-top: 25px;
 } */
 
-.eventPic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    /* position: relative;
-    float: left; */
-    max-height: 55px;
-    max-width: 200px;
-    /* border-top-left-radius: 6px; */
-    margin-top: 20px;
-}
-
 .cards {
     border: solid rgb(71, 71, 71) 3px;
     /* position: relative; */
@@ -124,6 +111,19 @@ select, input {
     margin-right: auto;
 }
 
+.eventPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    /* position: relative;
+    float: left; */
+    max-height: 55px;
+    max-width: 200px;
+    /* border-top-left-radius: 6px; */
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 576px) {
     #headerPic {
         max-width: 250px;
@@ -133,6 +133,15 @@ select, input {
 
 #submitSearch {
     margin-top: 18px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #dbdbdb;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
 
 /* The Modal (background) */
@@ -159,16 +168,6 @@ select, input {
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
 }
-
-/* Modal Content */
-.modal-content {
-    background-color: #dbdbdb;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
 
 /* The Close Button */
 .close {

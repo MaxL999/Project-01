@@ -11,6 +11,15 @@ body {
     font-family: 'PT Sans', sans-serif;
 }
 
+.thumbnail {
+    margin-top: 40px;
+}
+
+.unBoreMe {
+    font-weight: bold;
+    margin-top: 25px;
+}
+
 #map {
     height: 500px;
     width: 100%;
@@ -39,7 +48,7 @@ body {
 /* To style the document scrollbar, remove `.custom-scrollbar` */
 
 .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -61,7 +70,8 @@ body {
     margin-bottom: -130px;
 }
 
-select, input {
+select,
+input {
     margin-top: 5px;
 }
 
@@ -94,18 +104,6 @@ select, input {
     padding-top: 25px;
 } */
 
-.eventPic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    /* position: relative;
-    float: left; */
-    max-height: 55px;
-    max-width: 150px;
-    /* border-top-left-radius: 6px; */
-}
-
 .cards {
     border: solid rgb(71, 71, 71) 3px;
     /* position: relative; */
@@ -121,6 +119,19 @@ select, input {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.eventPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    /* position: relative;
+    float: left; */
+    max-height: 55px;
+    max-width: 200px;
+    /* border-top-left-radius: 6px; */
+    margin-top: 20px;
 }
 
 @media only screen and (max-width: 576px) {
@@ -168,7 +179,6 @@ select, input {
     width: 80%;
 }
 
-
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -189,16 +199,6 @@ select, input {
     padding: 0;
 }
 
-.button:before,
-.button:after {
-    border: 0 solid transparent;
-    transition: all 0.25s;
-    content: '';
-    height: 24px;
-    position: absolute;
-    width: 24px;
-}
-
 .button {
     background-color: #2199e8;
     border: none;
@@ -207,9 +207,19 @@ select, input {
     padding: 12px 40px 10px;
     position: relative;
     margin-bottom: 10px 0;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 5px;
+}
+
+.button:before,
+.button:after {
+    border: 0 solid transparent;
+    transition: all 0.25s;
+    content: '';
+    height: 24px;
+    position: absolute;
+    width: 24px;
 }
 
 .button:before {
@@ -294,14 +304,25 @@ select, input {
 .fb-share-button {
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 #favSearch {
     font-weight: bold;
-    font-size: large;
+    font-size: 2rem;
+    margin-top: 70px;
 }
 
 #resultCard {
     height: 100%;
+}
+
+.truncate-text {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.startTime {
+    margin-top: 10px;
 }

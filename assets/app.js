@@ -73,6 +73,7 @@ $(document).ready(function () {
         // Grabs event start time
         newTime = $("<p>")
         newTime.text(eventData[i].start_time)
+        newTime.addClass("startTime")
 
         // Populates the event title
         newTitle = $("<h5>")

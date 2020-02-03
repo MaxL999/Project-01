@@ -102,8 +102,9 @@ select, input {
     /* position: relative;
     float: left; */
     max-height: 55px;
-    max-width: 150px;
+    max-width: 200px;
     /* border-top-left-radius: 6px; */
+    margin-top: 20px;
 }
 
 .cards {
@@ -207,8 +208,8 @@ select, input {
     padding: 12px 40px 10px;
     position: relative;
     margin-bottom: 10px 0;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 5px;
 }
 
@@ -294,7 +295,8 @@ select, input {
 .fb-share-button {
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 #favSearch {
@@ -304,4 +306,13 @@ select, input {
 
 #resultCard {
     height: 100%;
+}
+
+.truncate-text {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.startTime {
+    margin-top: 10px;
 }

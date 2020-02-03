@@ -108,16 +108,18 @@ body {
     /* border-top-left-radius: 6px; */
 }
 
-/* .eventTitle {
-    padding-top: 25px;
-} */
-
 @media only screen and (max-width: 576px) {
     #headerPic {
         max-width: 250px;
         margin-top: -45px;
     }
    }
+
+/* .eventTitle {
+    padding-top: 25px;
+} */
+
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -126,6 +128,7 @@ body {
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
+    right: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -161,16 +164,6 @@ body {
     margin: 20px;   
 }
 
-.button:before,
-.button:after {
-    border: 0 solid transparent;
-    transition: all 0.25s;
-    content: '';
-    height: 24px;
-    position: absolute;
-    width: 24px;
-}
-
 .button {
     background-color: #2199e8;
     border: none;
@@ -182,6 +175,16 @@ body {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 5px;
+}
+
+.button:before,
+.button:after {
+    border: 0 solid transparent;
+    transition: all 0.25s;
+    content: '';
+    height: 24px;
+    position: absolute;
+    width: 24px;
 }
 
 
@@ -256,13 +259,14 @@ body {
       margin-bottom: 5px;
   }
 
+  .fb-share-button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 0;
+}
+
   #topSearch {
     font-weight: bold;
     font-size: large;
 }
 
-  .fb-share-button {
-      margin-top: 5px;
-      margin-bottom: 10px;
-      margin-right: 0;
-  }

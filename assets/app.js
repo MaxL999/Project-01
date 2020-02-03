@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  // Firebase config
   var firebaseConfig = {
     apiKey: "AIzaSyCeshwfwLmlh2uwM6BLs7J4SmoUbmZvoGQ",
     authDomain: "unboreme-b99d9.firebaseapp.com",
@@ -20,20 +20,20 @@ $(document).ready(function () {
   }
 
 
-  // These variables hold will feed data to the querlyURL. The variable values will come from user input. Currently some of the variables hold temporary data for testing purposes.
-
+  // These variables hold will feed data to the querlyURL. The variable values come from user input.
+  // API key needed for Eventful API
   var API_KEY = "vMvwtd4qCcNr8hZL";
   var proxyURL = "https://cors-anywhere.herokuapp.com/"
 
 
-  // Search query URL built from info from submitData. 
+  // Search query URL built from info from submitData. API is from Eventful.com. 
   const createQueryURL = (info) => {
-    console.log(info);
+   // console.log(info);
     return `http://api.eventful.com/json/events/search?app_key=${API_KEY}&q=${info.category}&l=${info.location}&within=${info.radius}&t=future&c=${info.category}&page_size=25`;
   }
 
   function searchEvents(data) {
-    // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection.
+    // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection errors.
     var queryURL = proxyURL + createQueryURL(data);
     console.log(queryURL);
     $.ajax({
@@ -43,42 +43,43 @@ $(document).ready(function () {
     }).then(function (response) {
       $("#resultCard").empty();
 
-      // first the entire response must be parsed from its JSON origin
+      // First the entire response must be parsed from the JSON origin
       temp = JSON.parse(response)
-      // then we can grab the important event information from the nest
-      eventData = temp.events.event
-      console.log(eventData)
+      // Event information is stored in a variable called eventData
+      var eventData = temp.events.event
+      // console.log(eventData)
       // Dynamically inserts event info into web page
 
+      // We iterate throught the JSON data
       for (var i = 0; i < eventData.length; i++) {
 
         var imgSRC;
 
-        // chooses which image to use
+        // Chooses which image to use, if no image is supplied, we use a stock image we created
         if (eventData[i].image === null) {
           imgSRC = "assets/images/unboremini.png";
         } else {
           imgSRC = "http:" + eventData[i].image.medium.url;
         }
 
-        // grabs country data from event API
+        // Grabs country data from event API
         newCountry = $("<p>")
         newCountry.text(eventData[i].country_name)
 
-        // grabs city data from event API
+        // Grabs city data from event API
         newCity = $("<p>")
         newCity.text(eventData[i].city_name)
 
-        // grabs event start time
+        // Grabs event start time
         newTime = $("<p>")
         newTime.text(eventData[i].start_time)
 
-        // populates the event title
+        // Populates the event title
         newTitle = $("<h5>")
         newTitle.addClass("truncate-text")
         newTitle.text(eventData[i].title)
 
-        // populates event address
+        // Populates event address
         newAddress = $("<p>")
         newAddress.text(eventData[i].venue_address)
         newAddress.addClass("location")
@@ -91,9 +92,14 @@ $(document).ready(function () {
         // create facebook share button
         newShareButton = $("<div>")
         newShareButton.addClass("fb-share-button")
-        newShareButton.attr({ "data-href": eventData[i].url, "data-layout": "button", "data-size": "large" })
+        newShareButton.attr({
+          "data-href": eventData[i].url,
+          "data-layout": "button",
+          "data-size": "large"
+        })
         shareAnchor = $("<a>")
         shareAnchor.attr("target", "_blank")
+        // Creates link to share to facebook which is fed from event JSON
         var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + eventData[i].url
         shareAnchor.attr("href", shareURL)
         shareAnchor.addClass("fb-xfbml-parse-ignore")
@@ -105,56 +111,64 @@ $(document).ready(function () {
         newURL.attr("target", "_blank")
         newURL.attr("href", eventData[i].url)
         newURL.text("Event Info")
-        newURL.addClass("btn btn-primary")
+        newURL.addClass("button primary")
 
-        // creates map button to address
+        // Creates div holder for Google map, initially does not display
         newMap = $("<div>")
         newMap.attr("id", "map")
         newMap.attr("style", "display:none")
 
+        // Creates Google map button. THis button holds the event cordinates which will feed the Google map function
         newButton = $("<button type='button' data-toggle='modal' data-target='#myModal' data-lat='" + eventData[i].latitude + "' data-lng='" + eventData[i].longitude + "'>")
         newButton.text("View Map")
         newButton.attr("value", eventData[i].venue_address)
-        newButton.addClass("map btn btn-primary")
+        newButton.addClass("map button primary")
 
 
-        // appends all above to individual divs
+        // Appends all above to individual cards for each event
         newEvent = $("<div>")
-        newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newShareButton, newButton)
+        newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
         newEvent.addClass("column cards")
 
         // appends dynamically generated divs to DOM
         $("#resultCard").append(newEvent)
+
+        // This is the piece of code needed to make the Facebook button work
         FB.XFBML.parse()
       }
 
-      // Toggles event map display
+      // Toggles event Google map display
       $('.map').click(function (e) {
         e.preventDefault();
 
         // Initializes and appends Google Maps to a Modal
-
+        // Initial Google map variables
         var map = null;
         var myMarker;
         var myLatlng;
 
+        //Grabs coordinates from Sumbit button
         function initializeGMap(lat, lng) {
           myLatlng = new google.maps.LatLng(lat, lng);
 
+        // Google maps options
           var myOptions = {
             zoom: 15,
             zoomControl: true,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
-
+        
+        // Targets div with Google map
           map = new google.maps.Map(document.getElementById("map"), myOptions);
 
+        // Creates Google map marker
           myMarker = new google.maps.Marker({
             position: myLatlng
           });
           myMarker.setMap(map);
-
+        
+        //Sets center of Google map based on coordinates
           map.setCenter(myLatlng);
         }
 
@@ -207,26 +221,26 @@ $(document).ready(function () {
   $("#submitSearch").click(function (event) {
     event.preventDefault();
 
-
+    // Checks if state is inputed
     if ($("#state").val() === "") {
       alert("location needed")
-      return false;
-    } else {
-      // empties result card div
+      return false;   
+    } else {   
+      // empties result card div    
       $("#resultCard").empty();
-      // runs loaderBounce function
-      loaderBounce();
-      // Storing the search queries
-      var submitData = {
-        category: $("#category option:selected").text().trim(),
-        location: $("#state").val().trim(),
-        radius: $("#radius").val().trim(),
+      // runs loaderBounce function        
+      loaderBounce();      
+      // Storing the search queries             
+      var submitData = {        
+        category: $("#category option:selected").text().trim(),   
+        location: $("#state").val().trim(),  
+        radius: $("#radius").val().trim(),   
       }
 
-      // Running the searchEvents function(passing search queries as arguments)
+      // Running the searchEvents function(passing search queries as arguments)      
       searchEvents(submitData);
 
-      // finds the chosen catagory and updates firebase      
+      // finds the chosen catagory and updates firebase           
       if (submitData.category === "Food") {
         Food++
         database.ref().update({
@@ -273,7 +287,7 @@ $(document).ready(function () {
           sports: Sports
         })
       } else {
-        console.log("firebase logic update error")
+      //  console.log("firebase logic update error")
       }
     }
   });
@@ -294,25 +308,25 @@ $(document).ready(function () {
     // finds highest number of all categories and then finds it and adds what people find most interseting into the page
     var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
     if (pplSearch === Food) {
-      $("#favSearch").html("People enjoy searching for food")
+      $("#topSearch").html("The top searched category is: Food")
     } else if (pplSearch === Music) {
-      $("#favSearch").html("People enjoy searching for music")
+      $("#topSearch").html("The top searched category is: Music")
     } else if (pplSearch === Comedy) {
-      $("#favSearch").html("People enjoy searching for comedy")
+      $("#topSearch").html("The top searched category is: Comedy")
     } else if (pplSearch === Literature) {
-      $("#favSearch").html("People enjoy searching for literatur")
+      $("#topSearch").html("The top searched category is: Literature")
     } else if (pplSearch === Art) {
-      $("#favSearch").html("People enjoy searching for art")
+      $("#topSearch").html("The top searched category is: Art")
     } else if (pplSearch === Carnival) {
-      $("#favSearch").html("People enjoy searching for carnival")
+      $("#topSearch").html("The top searched category is: Carnival")
     } else if (pplSearch === Cultural) {
-      $("#favSearch").html("People enjoy searching for cultural")
+      $("#topSearch").html("The top searched category is: Cultural")
     } else if (pplSearch === TradeShow) {
-      $("#favSearch").html("People enjoy searching for trade shows")
+      $("#topSearch").html("The top searched category is: Trade shows")
     } else if (pplSearch === Sports) {
-      $("#favSearch").html("People enjoy searching for sports")
+      $("#topSearch").html("The top searched category is: Sports")
     } else {
-      console.log("highest search record error")
+    //  console.log("highest search record error")
     }
   })
 

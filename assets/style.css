@@ -2,8 +2,12 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
 #map {
-    height: 400px;
+    height: 500px;
     width: 100%;
 } 
 
@@ -109,6 +113,7 @@
     margin-bottom: 5px; */
     color: #2199e8;
     border-radius: 5px;
+    margin: 0 0;
 }
 
 /* .eventTitle {
@@ -161,7 +166,7 @@
   }
 
 .btn {
-    margin: 20px;
+    margin: 20px;   
 }
 
 .button {
@@ -171,7 +176,7 @@
     outline: none;
     padding: 12px 40px 10px;
     position: relative;
-    margin-bottom: 0px;
+    margin-bottom: 10px 0;
 }
 .button:before,
 .button:after {
@@ -241,12 +246,20 @@
     animation-delay: 0.4s;
   }
 
-  #favSearch {
+  #topSearch {
       font-weight: bold;
+      font-size: large;
   }
 
   .searchParam {
       font-size: 24px;
       margin-top: -15px;
       margin-bottom: 5px;
+  }
+
+  .fb-share-button {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      margin-left: -10px;
+      margin-right: 0;
   }

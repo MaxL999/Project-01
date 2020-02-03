@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  // Firebase config
   var firebaseConfig = {
     apiKey: "AIzaSyCeshwfwLmlh2uwM6BLs7J4SmoUbmZvoGQ",
     authDomain: "unboreme-b99d9.firebaseapp.com",
@@ -21,14 +21,14 @@ $(document).ready(function () {
 
 
   // These variables hold will feed data to the querlyURL. The variable values come from user input.
-
+  // API key needed for Eventful API
   var API_KEY = "vMvwtd4qCcNr8hZL";
   var proxyURL = "https://cors-anywhere.herokuapp.com/"
 
 
-  // Search query URL built from info from submitData. 
+  // Search query URL built from info from submitData. API is from Eventful.com. 
   const createQueryURL = (info) => {
-    console.log(info);
+   // console.log(info);
     return `http://api.eventful.com/json/events/search?app_key=${API_KEY}&q=${info.category}&l=${info.location}&within=${info.radius}&t=future&c=${info.category}&page_size=25`;
   }
 
@@ -49,37 +49,37 @@ $(document).ready(function () {
       var eventData = temp.events.event
       // console.log(eventData)
       // Dynamically inserts event info into web page
-      
+
       // We iterate throught the JSON data
       for (var i = 0; i < eventData.length; i++) {
 
         var imgSRC;
 
-        // chooses which image to use
+        // Chooses which image to use, if no image is supplied, we use a stock image we created
         if (eventData[i].image === null) {
           imgSRC = "assets/images/unboremini.png";
         } else {
           imgSRC = "http:" + eventData[i].image.medium.url;
         }
 
-        // grabs country data from event API
+        // Grabs country data from event API
         newCountry = $("<p>")
         newCountry.text(eventData[i].country_name)
 
-        // grabs city data from event API
+        // Grabs city data from event API
         newCity = $("<p>")
         newCity.text(eventData[i].city_name)
 
-        // grabs event start time
+        // Grabs event start time
         newTime = $("<p>")
         newTime.text(eventData[i].start_time)
 
-        // populates the event title
+        // Populates the event title
         newTitle = $("<h5>")
         newTitle.addClass("truncate-text")
         newTitle.text(eventData[i].title)
 
-        // populates event address
+        // Populates event address
         newAddress = $("<p>")
         newAddress.text(eventData[i].venue_address)
         newAddress.addClass("location")
@@ -117,6 +117,7 @@ $(document).ready(function () {
         newMap.attr("id", "map")
         newMap.attr("style", "display:none")
 
+        // Creates Google map button. THis button holds the event cordinates which will feed the Google map function
         newButton = $("<button type='button' data-toggle='modal' data-target='#myModal' data-lat='" + eventData[i].latitude + "' data-lng='" + eventData[i].longitude + "'>")
         newButton.text("View Map")
         newButton.attr("value", eventData[i].venue_address)
@@ -130,6 +131,8 @@ $(document).ready(function () {
 
         // appends dynamically generated divs to DOM
         $("#resultCard").append(newEvent)
+
+        // This is the piece of code needed to make the Facebook button work
         FB.XFBML.parse()
       }
 
@@ -143,6 +146,7 @@ $(document).ready(function () {
         var myMarker;
         var myLatlng;
 
+        //Grabs coordinates from Sumbit button
         function initializeGMap(lat, lng) {
           myLatlng = new google.maps.LatLng(lat, lng);
 
@@ -212,7 +216,7 @@ $(document).ready(function () {
   $("#submitSearch").click(function (event) {
     event.preventDefault();
 
-
+    // Checks if state is inputed
     if ($("#state").val() === "") {
       alert("location needed")
       return false;
@@ -278,7 +282,7 @@ $(document).ready(function () {
           sports: Sports
         })
       } else {
-        console.log("firebase logic update error")
+      //  console.log("firebase logic update error")
       }
     }
   });

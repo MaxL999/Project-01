@@ -110,7 +110,7 @@ $(document).ready(function () {
         newURL.attr("target", "_blank")
         newURL.attr("href", eventData[i].url)
         newURL.text("Event Info")
-        newURL.addClass("btn btn-primary")
+        newURL.addClass("button primary")
 
         // creates map button to address
         newMap = $("<div>")
@@ -121,12 +121,12 @@ $(document).ready(function () {
         newButton = $("<button type='button' data-toggle='modal' data-target='#myModal' data-lat='" + eventData[i].latitude + "' data-lng='" + eventData[i].longitude + "'>")
         newButton.text("View Map")
         newButton.attr("value", eventData[i].venue_address)
-        newButton.addClass("map btn btn-primary")
+        newButton.addClass("map button primary")
 
 
-        // appends all above to individual divs
+        // Appends all above to individual cards for each event
         newEvent = $("<div>")
-        newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newShareButton, newButton)
+        newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
         newEvent.addClass("column cards")
 
         // appends dynamically generated divs to DOM
@@ -136,12 +136,12 @@ $(document).ready(function () {
         FB.XFBML.parse()
       }
 
-      // Toggles event map display
+      // Toggles event Google map display
       $('.map').click(function (e) {
         e.preventDefault();
 
         // Initializes and appends Google Maps to a Modal
-
+        // Initial Google map variables
         var map = null;
         var myMarker;
         var myLatlng;
@@ -150,20 +150,24 @@ $(document).ready(function () {
         function initializeGMap(lat, lng) {
           myLatlng = new google.maps.LatLng(lat, lng);
 
+        // Google maps options
           var myOptions = {
             zoom: 15,
             zoomControl: true,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
-
+        
+        // Targets div with Google map
           map = new google.maps.Map(document.getElementById("map"), myOptions);
 
+        // Creates Google map marker
           myMarker = new google.maps.Marker({
             position: myLatlng
           });
           myMarker.setMap(map);
-
+        
+        //Sets center of Google map based on coordinates
           map.setCenter(myLatlng);
         }
 
@@ -321,7 +325,7 @@ $(document).ready(function () {
     } else if (pplSearch === Sports) {
       $("#favSearch").html("People enjoy searching for sports")
     } else {
-      console.log("highest search record error")
+    //  console.log("highest search record error")
     }
   })
 

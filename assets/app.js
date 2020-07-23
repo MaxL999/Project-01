@@ -1,222 +1,226 @@
-$(document).ready(function () {
-  // Firebase config
-  var firebaseConfig = {
-    apiKey: "AIzaSyCeshwfwLmlh2uwM6BLs7J4SmoUbmZvoGQ",
-    authDomain: "unboreme-b99d9.firebaseapp.com",
-    databaseURL: "https://unboreme-b99d9.firebaseio.com",
-    projectId: "unboreme-b99d9",
-    storageBucket: "unboreme-b99d9.appspot.com",
-    messagingSenderId: "1080038770107",
-    appId: "1:1080038770107:web:4c8db7157faf340aaa309e"
-  };
+// Firebase config
+var firebaseConfig = {
+  apiKey: "AIzaSyCeshwfwLmlh2uwM6BLs7J4SmoUbmZvoGQ",
+  authDomain: "unboreme-b99d9.firebaseapp.com",
+  databaseURL: "https://unboreme-b99d9.firebaseio.com",
+  projectId: "unboreme-b99d9",
+  storageBucket: "unboreme-b99d9.appspot.com",
+  messagingSenderId: "1080038770107",
+  appId: "1:1080038770107:web:4c8db7157faf340aaa309e"
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-  database = firebase.database()
-
-  // function to load bouncing dots to display on DOM to show user site is working on finding results
-  var loaderBounce = function () {
-    $("#resultCard").html("<div class='bouncing-loader'><div></div><div></div><div></div></div>")
-  }
+database = firebase.database()
 
 
-  // These variables hold will feed data to the querlyURL. The variable values come from user input.
-  // API key needed for Eventful API
-  var API_KEY = "vMvwtd4qCcNr8hZL";
-  var proxyURL = "https://cors-anywhere.herokuapp.com/"
+// function to load bouncing dots to display on DOM to show user site is working on finding results
+var loaderBounce = function () {
+  $("#resultCard").html("<div class='bouncing-loader'><div></div><div></div><div></div></div>")
+}
 
 
-  // Search query URL built from info from submitData. API is from Eventful.com. 
-  const createQueryURL = (info) => {
-   // console.log(info);
-    return `http://api.eventful.com/json/events/search?app_key=${API_KEY}&q=${info.category}&l=${info.location}&within=${info.radius}&t=future&c=${info.category}&page_size=25`;
-  }
-
-  function searchEvents(data) {
-    // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection errors.
-    var queryURL = proxyURL + createQueryURL(data);
-    console.log(queryURL);
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      crossDomain: true
-    }).then(function (response) {
-      $("#resultCard").empty();
-
-      // First the entire response must be parsed from the JSON origin
-      temp = JSON.parse(response)
-      // Event information is stored in a variable called eventData
-      var eventData = temp.events.event
-      // console.log(eventData)
-      // Dynamically inserts event info into web page
-
-      // We iterate throught the JSON data
-      for (var i = 0; i < eventData.length; i++) {
-
-        var imgSRC;
-
-        // Chooses which image to use, if no image is supplied, we use a stock image we created
-        if (eventData[i].image === null) {
-          imgSRC = "assets/images/unboremini.png";
-        } else {
-          imgSRC = "http:" + eventData[i].image.medium.url;
-        }
-
-        // Grabs country data from event API
-        newCountry = $("<p>")
-        newCountry.text(eventData[i].country_name)
-
-        // Grabs city data from event API
-        newCity = $("<p>")
-        newCity.text(eventData[i].city_name)
-
-        // Grabs event start time
-        newTime = $("<p>")
-        newTime.text(eventData[i].start_time)
-        newTime.addClass("startTime")
-
-        // Populates the event title
-        newTitle = $("<h5>")
-        newTitle.addClass("truncate-text")
-        newTitle.text(eventData[i].title)
-
-        // Populates event address
-        newAddress = $("<p>")
-        newAddress.text(eventData[i].venue_address)
-        newAddress.addClass("location")
-
-        // populates event/placeholder image
-        newImage = $("<img src='" + imgSRC + "'>")
-        newImage.addClass("eventPic")
-        eventData[i].url
-
-        // create facebook share button
-        newShareButton = $("<div>")
-        newShareButton.addClass("fb-share-button")
-        newShareButton.attr({
-          "data-href": eventData[i].url,
-          "data-layout": "button",
-          "data-size": "large"
-        })
-        shareAnchor = $("<a>")
-        shareAnchor.attr("target", "_blank")
-        // Creates link to share to facebook which is fed from event JSON
-        var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + eventData[i].url
-        shareAnchor.attr("href", shareURL)
-        shareAnchor.addClass("fb-xfbml-parse-ignore")
-        shareAnchor.text("Share")
-        newShareButton.append(shareAnchor)
-
-        // creates anchor with event info link
-        newURL = $("<a>")
-        newURL.attr("target", "_blank")
-        newURL.attr("href", eventData[i].url)
-        newURL.text("Event Info")
-        newURL.addClass("button primary")
-
-        // Creates div holder for Google map, initially does not display
-        newMap = $("<div>")
-        newMap.attr("id", "map")
-        newMap.attr("style", "display:none")
-
-        // Creates Google map button. THis button holds the event cordinates which will feed the Google map function
-        newButton = $("<button type='button' data-toggle='modal' data-target='#myModal' data-lat='" + eventData[i].latitude + "' data-lng='" + eventData[i].longitude + "'>")
-        newButton.text("View Map")
-        newButton.attr("value", eventData[i].venue_address)
-        newButton.addClass("map button primary")
+// These variables hold will feed data to the querlyURL. The variable values come from user input.
+// API key needed for Eventful API
+var API_KEY = "vMvwtd4qCcNr8hZL";
+var proxyURL = "https://cors-anywhere.herokuapp.com/"
 
 
-        // Appends all above to individual cards for each event
-        newEvent = $("<div>")
-        newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
-        newEvent.addClass("column cards")
+// Search query URL built from info from submitData. API is from Eventful.com. 
+const createQueryURL = (info) => {
+  // console.log(info);
+  return `http://api.eventful.com/json/events/search?app_key=${API_KEY}&q=${info.category}&l=${info.location}&within=${info.radius}&t=future&c=${info.category}&page_size=25`;
+}
 
-        // appends dynamically generated divs to DOM
-        $("#resultCard").append(newEvent)
 
-        // This is the piece of code needed to make the Facebook button work
-        FB.XFBML.parse()
+function searchEvents(data) {
+  // queryURL to pull data from Eventful.com. The proxy URL is necessary to circumvent CORS rejection errors.
+  var queryURL = proxyURL + createQueryURL(data);
+  console.log(queryURL);
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    crossDomain: true
+  }).then(function (response) {
+    $("#resultCard").empty();
+
+    // First the entire response must be parsed from the JSON origin
+    temp = JSON.parse(response)
+    // Event information is stored in a variable called eventData
+    var eventData = temp.events.event
+    // console.log(eventData)
+    // Dynamically inserts event info into web page
+
+    // We iterate throught the JSON data
+    for (var i = 0; i < eventData.length; i++) {
+
+      var imgSRC;
+
+      // Chooses which image to use, if no image is supplied, we use a stock image we created
+      if (eventData[i].image === null) {
+        imgSRC = "assets/images/unboremini.png";
+      } else {
+        imgSRC = "http:" + eventData[i].image.medium.url;
       }
 
-      // Toggles event Google map display
-      $('.map').click(function (e) {
-        e.preventDefault();
+      // Grabs country data from event API
+      newCountry = $("<p>")
+      newCountry.text(eventData[i].country_name)
 
-        // Initializes and appends Google Maps to a Modal
-        // Initial Google map variables
-        var map = null;
-        var myMarker;
-        var myLatlng;
+      // Grabs city data from event API
+      newCity = $("<p>")
+      newCity.text(eventData[i].city_name)
 
-        //Grabs coordinates from Sumbit button
-        function initializeGMap(lat, lng) {
-          myLatlng = new google.maps.LatLng(lat, lng);
+      // Grabs event start time
+      newTime = $("<p>")
+      newTime.text(eventData[i].start_time)
+      newTime.addClass("startTime")
+
+      // Populates the event title
+      newTitle = $("<h5>")
+      newTitle.addClass("truncate-text")
+      newTitle.text(eventData[i].title)
+
+      // Populates event address
+      newAddress = $("<p>")
+      newAddress.text(eventData[i].venue_address)
+      newAddress.addClass("location")
+
+      // populates event/placeholder image
+      newImage = $("<img src='" + imgSRC + "'>")
+      newImage.addClass("eventPic")
+      eventData[i].url
+
+      // create facebook share button
+      newShareButton = $("<div>")
+      newShareButton.addClass("fb-share-button")
+      newShareButton.attr({
+        "data-href": eventData[i].url,
+        "data-layout": "button",
+        "data-size": "large"
+      })
+      shareAnchor = $("<a>")
+      shareAnchor.attr("target", "_blank")
+      // Creates link to share to facebook which is fed from event JSON
+      var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + eventData[i].url
+      shareAnchor.attr("href", shareURL)
+      shareAnchor.addClass("fb-xfbml-parse-ignore")
+      shareAnchor.text("Share")
+      newShareButton.append(shareAnchor)
+
+      // creates anchor with event info link
+      newURL = $("<a>")
+      newURL.attr("target", "_blank")
+      newURL.attr("href", eventData[i].url)
+      newURL.text("Event Info")
+      newURL.addClass("button primary")
+
+      // Creates div holder for Google map, initially does not display
+      newMap = $("<div>")
+      newMap.attr("id", "map")
+      newMap.attr("style", "display:none")
+
+      // Creates Google map button. THis button holds the event cordinates which will feed the Google map function
+      newButton = $("<button type='button' data-toggle='modal' data-target='#myModal' data-lat='" + eventData[i].latitude + "' data-lng='" + eventData[i].longitude + "'>")
+      newButton.text("View Map")
+      newButton.attr("value", eventData[i].venue_address)
+      newButton.addClass("map button primary")
+
+
+      // Appends all above to individual cards for each event
+      newEvent = $("<div>")
+      newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
+      newEvent.addClass("column cards")
+
+      // appends dynamically generated divs to DOM
+      $("#resultCard").append(newEvent)
+
+      // This is the piece of code needed to make the Facebook button work
+      // FB.XFBML.parse()
+    }
+
+    // Toggles event Google map display
+    $('.map').click(function (e) {
+      e.preventDefault();
+
+      // Initializes and appends Google Maps to a Modal
+      // Initial Google map variables
+      var map = null;
+      var myMarker;
+      var myLatlng;
+
+      //Grabs coordinates from Sumbit button
+      function initializeGMap(lat, lng) {
+        myLatlng = new google.maps.LatLng(lat, lng);
 
         // Google maps options
-          var myOptions = {
-            zoom: 15,
-            zoomControl: true,
-            center: myLatlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-        
+        var myOptions = {
+          zoom: 15,
+          zoomControl: true,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
         // Targets div with Google map
-          map = new google.maps.Map(document.getElementById("map"), myOptions);
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
 
         // Creates Google map marker
-          myMarker = new google.maps.Marker({
-            position: myLatlng
-          });
-          myMarker.setMap(map);
-        
+        myMarker = new google.maps.Marker({
+          position: myLatlng
+        });
+        myMarker.setMap(map);
+
         //Sets center of Google map based on coordinates
-          map.setCenter(myLatlng);
-        }
+        map.setCenter(myLatlng);
+      }
 
-        // Get the modal
-        var modal = document.getElementById("myModal");
+      // Get the modal
+      var modal = document.getElementById("myModal");
 
-        // Get the button that opens the modal
-        var btn = $(this);
+      // Get the button that opens the modal
+      var btn = $(this);
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-          modal.style.display = "block";
-        }
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
           modal.style.display = "none";
         }
+      }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
+      // Re-init map before show modal
+      $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        initializeGMap(button.data('lat'), button.data('lng'));
+        $("#location-map").css("width", "100%");
+        $("#map_canvas").css("width", "100%");
+      });
 
-        // Re-init map before show modal
-        $('#myModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          initializeGMap(button.data('lat'), button.data('lng'));
-          $("#location-map").css("width", "100%");
-          $("#map_canvas").css("width", "100%");
-        });
-
-        // Trigger map resize event after modal shown
-        $('#myModal').on('shown.bs.modal', function () {
-          google.maps.event.trigger(map, "resize");
-
-        });
+      // Trigger map resize event after modal shown
+      $('#myModal').on('shown.bs.modal', function () {
+        google.maps.event.trigger(map, "resize");
 
       });
-    });
-  };
 
+    });
+  });
+};
+
+
+// user inputs allowed when document is ready
+$(document).ready(function () {
 
   // Event handler for user clicking the submit button
   $("#submitSearch").click(function (event) {
@@ -225,17 +229,17 @@ $(document).ready(function () {
     // Checks if state is inputed
     if ($("#state").val() === "") {
       alert("location needed")
-      return false;   
-    } else {   
+      return false;
+    } else {
       // empties result card div    
       $("#resultCard").empty();
       // runs loaderBounce function        
-      loaderBounce();      
+      loaderBounce();
       // Storing the search queries  
-      var submitData = {        
-        category: $("#category option:selected").text().trim(),   
-        location: $("#state").val().trim(),  
-        radius: $("#radius").val().trim(),   
+      var submitData = {
+        category: $("#category option:selected").text().trim(),
+        location: $("#state").val().trim(),
+        radius: $("#radius").val().trim(),
       }
 
       // Running the searchEvents function(passing search queries as arguments)      
@@ -288,7 +292,7 @@ $(document).ready(function () {
           sports: Sports
         })
       } else {
-      //  console.log("firebase logic update error")
+        //  console.log("firebase logic update error")
       }
     }
   });
@@ -327,14 +331,7 @@ $(document).ready(function () {
     } else if (pplSearch === Sports) {
       $("#favSearch").html("The top searched category is: Sports")
     } else {
-    //  console.log("highest search record error")
+      //  console.log("highest search record error")
     }
   })
-
-
-
-
-
-
-
 });

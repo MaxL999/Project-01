@@ -231,7 +231,7 @@ $(document).ready(function () {
       $("#resultCard").empty();
       // runs loaderBounce function        
       loaderBounce();      
-      // Storing the search queries             
+      // Storing the search queries  
       var submitData = {        
         category: $("#category option:selected").text().trim(),   
         location: $("#state").val().trim(),  
@@ -295,7 +295,7 @@ $(document).ready(function () {
 
   // when the page bootsup/loads/value changes the local variables update
   database.ref().on("value", function (snapshot) {
-   //  console.log(snapshot.val())
+    console.log(snapshot.val())
     Food = snapshot.val().food
     Music = snapshot.val().music
     Comedy = snapshot.val().comedy

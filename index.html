@@ -94,14 +94,14 @@
         </div>
         <div class="custom-scrollbar">
 
-          <!-- Results section -->
+          <!-- Results section
           <div class="row small-up-2 medium-up-3 large-up-4" id="resultCard">
             <div id="onLoad">
               <img src="assets/images/spyGlass.png" alt="Spy Glass" id="spyGlass">
               <h2 id="onLoadH2">You haven't searched anything yet</h2>
             </div>
-            <!-- This where event card will be appended -->
-          </div>
+            This where event card will be appended
+          </div> -->
 
         </div>
 
@@ -125,82 +125,90 @@
 
   </div>
 
-
-
-
+  <!-- navbar -->
   <div>
-    <!-- navbar -->
+
+    <!-- the fixed top nav section -->
+    <!-- class="fixed-top" -->
     <div>
-      <!-- the fixed top nav section -->
-      <!-- class="fixed-top" -->
-      <div>
-        <!-- Header + navbar -->
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-        <!-- search form -->
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <!-- <h5 class="text-white h4">Collapsed content</h5>
-            <span class="text-muted">Toggleable via the navbar brand.</span> -->
 
+      <!-- Header + navbar -->
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
 
-            <form class="col-md-12 text-center">
-              <!-- Category Drop Down menu selection -->
-              <h3 class="text-center searchParam ">Category</h3>
-              <select id="category">
-                <option value="">Select One</option>
-                <option value="Food">Food</option>
-                <option value="Music">Music</option>
-                <option value="Comedy">Comedy</option>
-                <option value="literature">Literature</option>
-                <option value="Art">Art</option>
-                <option value="Carnival">Carnival</option>
-                <option value="Cultural">Cultural</option>
-                <option value="Trade Show">Trade Show</option>
-                <option value="Sports">Sports</option>
-              </select>
+      <!-- search form -->
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+
+          <form class="col-md-12 text-center">
+            <!-- Category Drop Down menu selection -->
+            <h3 class="text-center searchParam ">Category</h3>
+            <select id="category">
+              <option value="">Select One</option>
+              <option value="Food">Food</option>
+              <option value="Music">Music</option>
+              <option value="Comedy">Comedy</option>
+              <option value="literature">Literature</option>
+              <option value="Art">Art</option>
+              <option value="Carnival">Carnival</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Trade Show">Trade Show</option>
+              <option value="Sports">Sports</option>
+            </select>
+            </label>
+
+            <!-- City/State input-->
+            <div class="form-group">
+              <label for="state" class="col-md-12">
+                <h3 class="text-center searchParam">Location</h3>
               </label>
+              <input type="text" class="form-control text-center" id="state" placeholder="City, State">
+            </div>
 
-              <!-- City/State input-->
-              <div class="form-group">
-                <label for="state" class="col-md-12">
-                  <h3 class="text-center searchParam">Location</h3>
-                </label>
-                <input type="text" class="form-control text-center" id="state" placeholder="City, State">
-              </div>
-              <!-- Radius input -->
-              <form class="col-md-12 text-center">
-                <h3 class="text-center searchParam">Search Radius</h3>
-                <select id="radius">
-                  <option value="5">5 Miles</option>
-                  <option value="10">10 Miles</option>
-                  <option value="25">25 Miles</option>
-                  <option value="50">50 Miles</option>
-                </select>
-                </label>
+            <!-- Radius input -->
+            <h3 class="text-center searchParam">Search Radius</h3>
+            <select id="radius">
+              <option value="5">5 Miles</option>
+              <option value="10">10 Miles</option>
+              <option value="25">25 Miles</option>
+              <option value="50">50 Miles</option>
+            </select>
+            </label>
 
+            <!--Submit Button-->
+            <div class="col-md-12 text-center mt-4">
+              <button type="submit" id="submitSearch" class="button">Submit</button>
+            </div>
+          </form>
 
-                <!--Submit Button-->
-                <div class="col-md-12 text-center mt-4">
-                  <button type="submit" id="submitSearch" class="button">Submit</button>
-                </div>
-              </form>
-
-
-          </div>
         </div>
       </div>
     </div>
-    <!-- main content -->
-    <!-- initially contain introduction, displays search after -->
-    <div>
-      <div>
+  </div>
+  <!-- main content -->
+  <!-- initially contain introduction, displays search after -->
+  <div id="resultCard">
+    <div class="bg-secondary text-center">
+      <!-- <div class="off-canvas position-left reveal-for-large text-center" id="my-info" data-off-canvas
+        data-position="left">
+        <div class="row column">
+          <br>
+          <img class="thumbnail" src="assets/images/unboreme.png">
+          <h5 class="unBoreMe">UnBore Me</h5>
+          <p>Search thousands of events happening in your area! Search from a wide list of categories to find stuff to
+            do that interests YOU!</p> <br><br><br>
+          <div id="favSearch"></div>
+        </div>
+      </div> -->
 
-      </div>
+      <img class="thumbnail" src="assets/images/unboreme.png">
+      <p>Search thousands of events happening in your area! Search from a wide list of categories to find stuff to
+        do that interests YOU!</p>
+
     </div>
   </div>
 

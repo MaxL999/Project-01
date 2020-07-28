@@ -15,11 +15,13 @@
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
   <!--Style sheets including Zurb Foundation-->
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <!-- <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"> -->
+  
+  <!-- <link rel="stylesheet" href="assets/style.css"> -->
+  <link rel="stylesheet" href="assets/style2.css">
 </head>
 
-<body>
+<body class="bg-secondary">
   <!-- Facebook Share Button Code -->
   <!-- <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
@@ -129,25 +131,24 @@
   <div>
 
     <!-- the fixed top nav section -->
-    <!-- class="fixed-top" -->
-    <div>
+    <div class="fixed-top">
 
       <!-- Header + navbar -->
       <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-          aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchFormToggle"
+          aria-controls="searchFormToggle" aria-expanded="false" aria-label="Search Content">
           <!-- <span class="navbar-toggler-icon"></span> -->
           <span>Search</span>
         </button>
       </nav>
 
       <!-- search form -->
-      <div class="collapse" id="navbarToggleExternalContent">
+      <div class="collapse" id="searchFormToggle">
         <div class="bg-dark p-4">
 
-          <form class="col-md-12 text-center">
+          <form class="text-center">
             <!-- Category Drop Down menu selection -->
-            <h3 class="text-center searchParam ">Category</h3>
+            <h3 class="text-center searchParam">Category</h3>
             <select id="category">
               <option value="">Select One</option>
               <option value="Food">Food</option>
@@ -193,7 +194,7 @@
   <!-- main content -->
   <!-- initially contain introduction, displays search after -->
   <div id="resultCard">
-    <div class="bg-secondary text-center">
+    <div class="text-center">
       <!-- <div class="off-canvas position-left reveal-for-large text-center" id="my-info" data-off-canvas
         data-position="left">
         <div class="row column">
@@ -214,12 +215,11 @@
   </div>
 
   <!-- Zurb Foundation -->
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <!-- <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
   <!-- Foundation Link -->
-  <script>
+  <!-- <script>
     $(document).foundation();
-  </script>
+  </script> -->
 
   <!-- Google Maps api-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoMvdbTu1ucaGM-qE6500rBOpuah5YQ_M"></script>

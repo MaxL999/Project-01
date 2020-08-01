@@ -46,6 +46,7 @@ function searchEvents(data) {
 
     // First the entire response must be parsed from the JSON origin
     temp = JSON.parse(response)
+    console.log(temp)
     // Event information is stored in a variable called eventData
     var eventData = temp.events.event
     // console.log(eventData)
@@ -130,10 +131,15 @@ function searchEvents(data) {
       // Appends all above to individual cards for each event
       newEvent = $("<div>")
       newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
-      newEvent.addClass("column cards")
+      // newEvent.addClass("column cards")
+      newEvent.addClass("card text-center h-100")
+
+      eventShell = $("<div>")
+      eventShell.addClass("col-md-6 col-xl-4 p-3")
+      eventShell.append(newEvent)
 
       // appends dynamically generated divs to DOM
-      $("#resultCard").append(newEvent)
+      $("#resultCard").append(eventShell)
 
       // This is the piece of code needed to make the Facebook button work
       // FB.XFBML.parse()
@@ -219,6 +225,46 @@ function searchEvents(data) {
 };
 
 
+// when the page bootsup/loads/value changes the local variables update
+// records values for display
+database.ref().on("value", function (snapshot) {
+  console.log(snapshot.val())
+  Food = snapshot.val().food
+  Music = snapshot.val().music
+  Comedy = snapshot.val().comedy
+  Literature = snapshot.val().literature
+  Art = snapshot.val().art
+  Carnival = snapshot.val().carnival
+  Cultural = snapshot.val().cultural
+  TradeShow = snapshot.val().tradeShow
+  Sports = snapshot.val().sports
+
+  // finds highest number of all categories and then finds it and adds what people find most interseting into the page
+  var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
+  if (pplSearch === Food) {
+    $("#favSearch").html("The top searched category is: Food")
+  } else if (pplSearch === Music) {
+    $("#favSearch").html("The top searched category is: Music")
+  } else if (pplSearch === Comedy) {
+    $("#favSearch").html("The top searched category is: Comedy")
+  } else if (pplSearch === Literature) {
+    $("#favSearch").html("The top searched category is: Literature")
+  } else if (pplSearch === Art) {
+    $("#favSearch").html("The top searched category is: Art")
+  } else if (pplSearch === Carnival) {
+    $("#favSearch").html("The top searched category is: Carnival")
+  } else if (pplSearch === Cultural) {
+    $("#favSearch").html("The top searched category is: Cultural")
+  } else if (pplSearch === TradeShow) {
+    $("#favSearch").html("The top searched category is: Trade shows")
+  } else if (pplSearch === Sports) {
+    $("#favSearch").html("The top searched category is: Sports")
+  } else {
+    //  console.log("highest search record error")
+  }
+})
+
+
 // user inputs allowed when document is ready
 $(document).ready(function () {
 
@@ -297,41 +343,7 @@ $(document).ready(function () {
     }
   });
 
-  // when the page bootsup/loads/value changes the local variables update
-  database.ref().on("value", function (snapshot) {
-    console.log(snapshot.val())
-    Food = snapshot.val().food
-    Music = snapshot.val().music
-    Comedy = snapshot.val().comedy
-    Literature = snapshot.val().literature
-    Art = snapshot.val().art
-    Carnival = snapshot.val().carnival
-    Cultural = snapshot.val().cultural
-    TradeShow = snapshot.val().tradeShow
-    Sports = snapshot.val().sports
 
-    // finds highest number of all categories and then finds it and adds what people find most interseting into the page
-    var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
-    if (pplSearch === Food) {
-      $("#favSearch").html("The top searched category is: Food")
-    } else if (pplSearch === Music) {
-      $("#favSearch").html("The top searched category is: Music")
-    } else if (pplSearch === Comedy) {
-      $("#favSearch").html("The top searched category is: Comedy")
-    } else if (pplSearch === Literature) {
-      $("#favSearch").html("The top searched category is: Literature")
-    } else if (pplSearch === Art) {
-      $("#favSearch").html("The top searched category is: Art")
-    } else if (pplSearch === Carnival) {
-      $("#favSearch").html("The top searched category is: Carnival")
-    } else if (pplSearch === Cultural) {
-      $("#favSearch").html("The top searched category is: Cultural")
-    } else if (pplSearch === TradeShow) {
-      $("#favSearch").html("The top searched category is: Trade shows")
-    } else if (pplSearch === Sports) {
-      $("#favSearch").html("The top searched category is: Sports")
-    } else {
-      //  console.log("highest search record error")
-    }
-  })
+
+
 });

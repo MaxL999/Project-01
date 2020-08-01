@@ -1,6 +1,21 @@
 #resultCard{
     margin-top: 50px;
 }
+
 nav{
     height: 50px;
+}
+
+/* text overflow for responses */
+.truncate-text:hover {
+    overflow: visible;
+    white-space: normal;
+    width: auto;
+}
+
+.truncate-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 210px;
 }

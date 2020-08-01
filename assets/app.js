@@ -116,6 +116,7 @@ function searchEvents(data) {
       newURL.text("Event Info")
       newURL.addClass("button primary")
 
+      // useless???
       // Creates div holder for Google map, initially does not display
       newMap = $("<div>")
       newMap.attr("id", "map")
@@ -127,19 +128,18 @@ function searchEvents(data) {
       newButton.attr("value", eventData[i].venue_address)
       newButton.addClass("map button primary")
 
+      // footer used to stick links to bottom of the card
+      // cardFooter = $("<div>")
+      // cardFooter.addClass("card-footer")
+      // cardFooter.append()
 
       // Appends all above to individual cards for each event
       newEvent = $("<div>")
-      newEvent.append(newImage, newTitle, newAddress, newTime, newURL, newButton, newShareButton)
-      // newEvent.addClass("column cards")
-      newEvent.addClass("card text-center h-100")
-
-      eventShell = $("<div>")
-      eventShell.addClass("col-md-6 col-xl-4 p-3")
-      eventShell.append(newEvent)
+      newEvent.append(newImage, newTitle, newAddress, newTime, newShareButton, newButton, newURL)
+      newEvent.addClass("card cardSize text-center p-3 m-3")
 
       // appends dynamically generated divs to DOM
-      $("#resultCard").append(eventShell)
+      $("#resultCard").append(newEvent)
 
       // This is the piece of code needed to make the Facebook button work
       // FB.XFBML.parse()

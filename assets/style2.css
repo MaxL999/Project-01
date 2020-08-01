@@ -6,6 +6,10 @@ nav{
     height: 50px;
 }
 
+.cardSize{
+    min-width: 20rem;
+}
+
 /* text overflow for responses */
 .truncate-text:hover {
     overflow: visible;

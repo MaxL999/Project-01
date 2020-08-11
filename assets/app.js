@@ -244,28 +244,28 @@ database.ref().on("value", function (snapshot) {
 
   switch (pplSearch) {
     case Food:
-      $("#favSearch").html("People are hungry! Food is the most searched topic")
+      $("#favSearch").text("People are hungry! Food is the most searched topic")
       break;
     case Music:
-      $("#favSearch").html("Everyone loves music! Music is the most searched event")
+      $("#favSearch").text("Everyone loves music! Music is the most searched event")
       break;
     case Comedy:
-      $("#favSearch").html("Who couldent use a good laugh? People seem to be searching for comedy!")
+      $("#favSearch").text("Who couldent use a good laugh? People seem to be searching for comedy!")
       break;
     case Literature:
-      $("#favSearch").html("Books are good for you! Everyone has been searching for literature")
+      $("#favSearch").text("Books are good for you! Everyone has been searching for literature")
       break;
     case Art:
-      $("#favSearch").html("Seen a work of art recently? Everyone is searching for art events")
+      $("#favSearch").text("Seen a work of art recently? Everyone is searching for art events")
       break;
     case Carnival:
-      $("#favSearch").html("The state fair is my favorite! Find a carnival near you!")
+      $("#favSearch").text("The state fair is my favorite! Find a carnival near you!")
       break;
     case TradeShow:
-      $("#favSearch").html("Seems everyone wants a job! People are searching most for trade shows")
+      $("#favSearch").text("Seems everyone wants a job! People are searching most for trade shows")
       break;
     case Sports:
-      $("#favSearch").html("Find a new sports group! Get moving!")
+      $("#favSearch").text("Find a new sports group! Get moving!")
       break;
   }
 })

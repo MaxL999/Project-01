@@ -241,26 +241,32 @@ database.ref().on("value", function (snapshot) {
 
   // finds highest number of all categories and then finds it and adds what people find most interseting into the page
   var pplSearch = Math.max(Food, Music, Comedy, Literature, Art, Carnival, Cultural, TradeShow, Sports)
-  if (pplSearch === Food) {
-    $("#favSearch").html("The top searched category is: Food")
-  } else if (pplSearch === Music) {
-    $("#favSearch").html("The top searched category is: Music")
-  } else if (pplSearch === Comedy) {
-    $("#favSearch").html("The top searched category is: Comedy")
-  } else if (pplSearch === Literature) {
-    $("#favSearch").html("The top searched category is: Literature")
-  } else if (pplSearch === Art) {
-    $("#favSearch").html("The top searched category is: Art")
-  } else if (pplSearch === Carnival) {
-    $("#favSearch").html("The top searched category is: Carnival")
-  } else if (pplSearch === Cultural) {
-    $("#favSearch").html("The top searched category is: Cultural")
-  } else if (pplSearch === TradeShow) {
-    $("#favSearch").html("The top searched category is: Trade shows")
-  } else if (pplSearch === Sports) {
-    $("#favSearch").html("The top searched category is: Sports")
-  } else {
-    //  console.log("highest search record error")
+
+  switch (pplSearch) {
+    case Food:
+      $("#favSearch").html("People are hungry! Food is the most searched topic")
+      break;
+    case Music:
+      $("#favSearch").html("Everyone loves music! Music is the most searched event")
+      break;
+    case Comedy:
+      $("#favSearch").html("Who couldent use a good laugh? People seem to be searching for comedy!")
+      break;
+    case Literature:
+      $("#favSearch").html("Books are good for you! Everyone has been searching for literature")
+      break;
+    case Art:
+      $("#favSearch").html("Seen a work of art recently? Everyone is searching for art events")
+      break;
+    case Carnival:
+      $("#favSearch").html("The state fair is my favorite! Find a carnival near you!")
+      break;
+    case TradeShow:
+      $("#favSearch").html("Seems everyone wants a job! People are searching most for trade shows")
+      break;
+    case Sports:
+      $("#favSearch").html("Find a new sports group! Get moving!")
+      break;
   }
 })
 

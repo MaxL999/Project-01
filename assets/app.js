@@ -272,6 +272,7 @@ database.ref().on("value", function (snapshot) {
 
 
 // user inputs allowed when document is ready
+// some user inputs are created inside the searchEvents function, might need to change that
 $(document).ready(function () {
 
   // Event handler for user clicking the submit button

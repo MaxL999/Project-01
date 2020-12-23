@@ -54,44 +54,7 @@
         <div class="callout primary">
           <div class="row column">
             
-              <form class="col-md-12 text-center">
-
-              <h3 class="text-center searchParam ">Category</h3>
-              <select id="category">
-                <option value="">Select One</option>
-                <option value="Food">Food</option>
-                <option value="Music">Music</option>
-                <option value="Comedy">Comedy</option>
-                <option value="literature">Literature</option>
-                <option value="Art">Art</option>
-                <option value="Carnival">Carnival</option>
-                <option value="Cultural">Cultural</option>
-                <option value="Trade Show">Trade Show</option>
-                <option value="Sports">Sports</option>
-              </select>
-              </label>
-
-              <div class="form-group">
-                <label for="state" class="col-md-12">
-                  <h3 class="text-center searchParam">Location</h3>
-                </label>
-                <input type="text" class="form-control text-center" id="state" placeholder="City, State">
-              </div>
-
-              <form class="col-md-12 text-center">
-                <h3 class="text-center searchParam">Search Radius</h3>
-                <select id="radius">
-                  <option value="5">5 Miles</option>
-                  <option value="10">10 Miles</option>
-                  <option value="25">25 Miles</option>
-                  <option value="50">50 Miles</option>
-                </select>
-                </label>
-
-                <div class="col-md-12 text-center mt-4">
-                  <button type="submit" id="submitSearch" class="button">Submit</button>
-                </div>
-              </form>
+              
           </div>
         </div>
         <div class="custom-scrollbar">
@@ -127,97 +90,66 @@
 
   </div> -->
 
-  <!-- navbar -->
-  <!-- the fixed top nav section -->
-  <div class="fixed-top">
-
-    <!-- Header + navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchFormToggle"
-        aria-controls="searchFormToggle" aria-expanded="false" aria-label="Search Content">
-        <!-- <span class="navbar-toggler-icon"></span> -->
-        <span>Search</span>
-      </button>
-    </nav>
-
-    <!-- search form -->
-    <div class="collapse" id="searchFormToggle">
-      <div class="bg-dark p-4">
-
-        <form class="text-center">
-          <!-- Category Drop Down menu selection -->
-          <h3 class="text-center searchParam">Category</h3>
-          <select id="category">
-            <option value="">Select One</option>
-            <option value="Food">Food</option>
-            <option value="Music">Music</option>
-            <option value="Comedy">Comedy</option>
-            <option value="literature">Literature</option>
-            <option value="Art">Art</option>
-            <option value="Carnival">Carnival</option>
-            <option value="Cultural">Cultural</option>
-            <option value="Trade Show">Trade Show</option>
-            <option value="Sports">Sports</option>
-          </select>
-          </label>
-
-          <!-- City/State input-->
-          <div class="form-group">
-            <label for="state" class="col-md-12">
-              <h3 class="text-center searchParam">Location</h3>
-            </label>
-            <input type="text" class="form-control text-center" id="state" placeholder="City, State">
-          </div>
-
-          <!-- Radius input -->
-          <h3 class="text-center searchParam">Search Radius</h3>
-          <select id="radius">
-            <option value="5">5 Miles</option>
-            <option value="10">10 Miles</option>
-            <option value="25">25 Miles</option>
-            <option value="50">50 Miles</option>
-          </select>
-          </label>
-
-          <!--Submit Button-->
-          <div class="col-md-12 text-center mt-4">
-            <button type="submit" id="submitSearch" class="button">Submit</button>
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
   <!-- main content -->
-  <!-- initially contain introduction, displays search after -->
-  <div class="container">
+  <div class="container text-center">
 
-    <div class="card-deck text-center p-3" id="resultCard">
+    <img id="thumbnail" src="assets/images/unboreme.png" alt="title image">
+    <p>
+      Search thousands of events happening in your area! Search from a wide list of categories to find stuff to
+      do that interests YOU!
+    </p>
 
-      <!-- <div class="off-canvas position-left reveal-for-large text-center" id="my-info" data-off-canvas
-          data-position="left">
-          <div class="row column">
-            <br>
-            <img class="thumbnail" src="assets/images/unboreme.png">
-            <h5 class="unBoreMe">UnBore Me</h5>
-            <p>Search thousands of events happening in your area! Search from a wide list of categories to find stuff to
-              do that interests YOU!</p> <br><br><br>
-            <div id="favSearch"></div>
-          </div>
-        </div> -->
-
-      <img id="thumbnail" class="text-center" src="assets/images/unboreme.png" alt="title image">
-      <p>Search thousands of events happening in your area! Search from a wide list of categories to find stuff to
-        do that interests YOU!</p>
-
-      <div id="favSearch" class="text-center">
-
-      </div>
+    <div id="favSearch">
 
     </div>
-    <footer class="bg-primary text-center">
+
+    <form class="col-md-12">
+
+      <h3 class="searchParam">Category</h3>
+      <select id="category">
+        <option value="">Select One</option>
+        <option value="Food">Food</option>
+        <option value="Music">Music</option>
+        <option value="Comedy">Comedy</option>
+        <option value="literature">Literature</option>
+        <option value="Art">Art</option>
+        <option value="Carnival">Carnival</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Trade Show">Trade Show</option>
+        <option value="Sports">Sports</option>
+      </select>
+      </label>
+
+      <div class="form-group">
+        <label for="state" class="col-md-12">
+          <h3 class="searchParam">Location</h3>
+        </label>
+        <input type="text" class="form-control" id="state" placeholder="City, State">
+      </div>
+
+      <form class="col-md-12">
+        <h3 class="searchParam">Search Radius</h3>
+        <select id="radius">
+          <option value="5">5 Miles</option>
+          <option value="10">10 Miles</option>
+          <option value="25">25 Miles</option>
+          <option value="50">50 Miles</option>
+        </select>
+        </label>
+
+        <div class="col-md-12 text-center mt-4">
+          <button type="submit" id="submitSearch" class="button">Submit</button>
+        </div>
+      </form>
+
+
+      <div class="card-deck text-center p-3" id="resultCard">
+
+
+      </div>
+      <!-- <footer class="bg-primary text-center">
       <p>This website collects data on what type of events you search for</p>
-    </footer>
+    </footer> -->
   </div>
 
   <!-- Zurb Foundation -->

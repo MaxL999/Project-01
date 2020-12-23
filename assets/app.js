@@ -31,10 +31,9 @@ const createQueryURL = (info) => {
   console.log(info);
   // &t=future
   var string = `http://api.eventful.com/json/events/search?app_key=${API_KEY}`;
-  if (info.category) string += `&q=${info.category}`;
   if (info.location) string += `&l=${info.location}`;
   if (info.radius) string += `&within=${info.radius}`;
-  if (info.category) string += `&c=${info.category}`;
+  if (!info.category === "Select One") string += `&c=${info.category}`;
   if (info.limit) string += `&page_size=${info.limit}`;
   console.log(string)
   return string;
@@ -60,15 +59,13 @@ function searchEvents(data) {
     // console.log(eventData)
     // Dynamically inserts event info into web page
 
-    // We iterate throught the JSON data
-    for (var i = 0; i < eventData.length; i++) {
+    $("#totalResults").text("Displaying " + eventData.length + " out of " + temp.total_items + " results")
 
-      console.log(eventData[i].image)
+    // We iterate throught the JSON data
+    for (i in eventData) {
 
       // Chooses which image to use, if no image is supplied, we use a stock image we created      
       let imgSRC;
-
-
       if (eventData[i].image) {
         if (eventData[i].image.url) {
           imgSRC = "http:" + eventData[i].image.url;

@@ -63,13 +63,24 @@ function searchEvents(data) {
     // We iterate throught the JSON data
     for (var i = 0; i < eventData.length; i++) {
 
-      var imgSRC;
+      console.log(eventData[i].image)
 
-      // Chooses which image to use, if no image is supplied, we use a stock image we created
-      if (eventData[i].image === null) {
-        imgSRC = "assets/images/unboremini.png";
+      // Chooses which image to use, if no image is supplied, we use a stock image we created      
+      let imgSRC;
+
+
+      if (eventData[i].image) {
+        if (eventData[i].image.url) {
+          imgSRC = "http:" + eventData[i].image.url;
+        } else if (eventData[i].image.medium.url) {
+          imgSRC = "http:" + eventData[i].image.medium.url;
+        } else if (eventData[i].image.small.url) {
+          imgSRC = "http:" + eventData[i].image.small.url;
+        } else if (eventData[i].image.thumb.url) {
+          imgSRC = "http:" + eventData[i].image.thumb.url;
+        }
       } else {
-        imgSRC = "http:" + eventData[i].image.medium.url;
+        imgSRC = "assets/images/unboremini.png";
       }
 
       // Grabs country data from event API
@@ -286,84 +297,79 @@ $(document).ready(function () {
   $("#submitSearch").click(function (event) {
     event.preventDefault();
 
-    // Checks if state is inputed
-    if ($("#state").val() === "") {
-      alert("location needed")
-      return false;
-    } else {
-      // empties result card div    
-      $("#resultCard").empty();
-      // runs loaderBounce function        
-      loaderBounce();
-      // Storing the search queries  
-      var submitData = {
-        category: $("#category option:selected").text().trim(),
-        location: $("#location").val().trim(),
-        radius: $("#radius").val().trim(),
-        keyword: $("#keyword").val().trim(),
-        limit: $("#limit").val().trim(),
-      }
 
-      // Running the searchEvents function(passing search queries as arguments)      
-      searchEvents(submitData);
+    // empties result card div    
+    $("#resultCard").empty();
+    // runs loaderBounce function        
+    loaderBounce();
+    // Storing the search queries  
+    var submitData = {
+      category: $("#category option:selected").text().trim(),
+      location: $("#location").val().trim(),
+      radius: $("#radius").val().trim(),
+      keyword: $("#keyword").val().trim(),
+      limit: $("#limit").val().trim(),
+    }
 
-      // finds the chosen catagory and updates firebase
-      switch (submitData.category) {
-        case "Food":
-          Food++
-          database.ref().update({
-            food: Food
-          })
-          break;
-        case "Music":
-          Music++
-          database.ref().update({
-            music: Music
-          })
-          break;
-        case "Comedy":
-          Comedy++
-          database.ref().update({
-            comedy: Comedy
-          })
-          break;
-        case "Literature":
-          Literature++
-          database.ref().update({
-            literature: Literature
-          })
-          break;
-        case "Art":
-          Art++
-          database.ref().update({
-            art: Art
-          })
-          break;
-        case "Carnival":
-          Carnival++
-          database.ref().update({
-            carnival: Carnival
-          })
-          break;
-        case "Cultural":
-          Cultural++
-          database.ref().update({
-            cultural: Cultural
-          })
-          break;
-        case "TradeShow":
-          TradeShow++
-          database.ref().update({
-            tradeShow: TradeShow
-          })
-          break;
-        case "Sports":
-          Sports++
-          database.ref().update({
-            sports: Sports
-          })
-          break;
-      }
+    // Running the searchEvents function(passing search queries as arguments)      
+    searchEvents(submitData);
+
+    // finds the chosen catagory and updates firebase
+    switch (submitData.category) {
+      case "Food":
+        Food++
+        database.ref().update({
+          food: Food
+        })
+        break;
+      case "Music":
+        Music++
+        database.ref().update({
+          music: Music
+        })
+        break;
+      case "Comedy":
+        Comedy++
+        database.ref().update({
+          comedy: Comedy
+        })
+        break;
+      case "Literature":
+        Literature++
+        database.ref().update({
+          literature: Literature
+        })
+        break;
+      case "Art":
+        Art++
+        database.ref().update({
+          art: Art
+        })
+        break;
+      case "Carnival":
+        Carnival++
+        database.ref().update({
+          carnival: Carnival
+        })
+        break;
+      case "Cultural":
+        Cultural++
+        database.ref().update({
+          cultural: Cultural
+        })
+        break;
+      case "TradeShow":
+        TradeShow++
+        database.ref().update({
+          tradeShow: TradeShow
+        })
+        break;
+      case "Sports":
+        Sports++
+        database.ref().update({
+          sports: Sports
+        })
+        break;
     }
   });
 });

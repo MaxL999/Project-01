@@ -105,49 +105,74 @@
 
     <form class="col-md-12">
 
-      <h3 class="searchParam">Category</h3>
-      <select id="category">
-        <option value="">Select One</option>
-        <option value="Food">Food</option>
-        <option value="Music">Music</option>
-        <option value="Comedy">Comedy</option>
-        <option value="literature">Literature</option>
-        <option value="Art">Art</option>
-        <option value="Carnival">Carnival</option>
-        <option value="Cultural">Cultural</option>
-        <option value="Trade Show">Trade Show</option>
-        <option value="Sports">Sports</option>
-      </select>
-      </label>
-
       <div class="form-group">
-        <label for="state" class="col-md-12">
-          <h3 class="searchParam">Location</h3>
+        <label for="keyword">
+          <h3>Keywords:</h3>
         </label>
-        <input type="text" class="form-control" id="state" placeholder="City, State">
+        <input type="text" class="form-control" id="keyword" placeholder="Keywords">
       </div>
 
-      <form class="col-md-12">
-        <h3 class="searchParam">Search Radius</h3>
-        <select id="radius">
+      <div class="form-group">
+        <label for="location">
+          <h3>Location:</h3>
+        </label>
+        <input type="text" class="form-control" id="location" placeholder="City, State">
+      </div>
+
+      <!-- date -->
+
+      <!-- list of categories can be added -->
+      <div class="form-group">
+        <label for="catagory">
+          <h3>Category:</h3>
+        </label>
+        <select id="category">
+          <option value="">Select One</option>
+          <option value="Food">Food</option>
+          <option value="Music">Music</option>
+          <option value="Comedy">Comedy</option>
+          <option value="literature">Literature</option>
+          <option value="Art">Art</option>
+          <option value="Carnival">Carnival</option>
+          <option value="Cultural">Cultural</option>
+          <option value="Trade Show">Trade Show</option>
+          <option value="Sports">Sports</option>
+        </select>
+      </div>
+      <!-- exclude categories -->
+
+
+      <div class="form-group">
+        <label for="radius">
+          <h3>Search Radius</h3>
+        </label>
+        <select id="radius" class="form-control">
           <option value="5">5 Miles</option>
           <option value="10">10 Miles</option>
           <option value="25">25 Miles</option>
           <option value="50">50 Miles</option>
         </select>
-        </label>
-
-        <div class="col-md-12 text-center mt-4">
-          <button type="submit" id="submitSearch" class="button">Submit</button>
-        </div>
-      </form>
-
-
-      <div class="card-deck text-center p-3" id="resultCard">
-
-
       </div>
-      <!-- <footer class="bg-primary text-center">
+      <!-- set miles or kilomiles -->
+
+      <!-- display limit -->
+      <div class="form-group">
+        <label for="limit">
+          <h3>Result Limit:</h3>
+        </label>
+        <input type="text" class="form-control" id="limit" placeholder="Limit Result Size">
+      </div>
+
+      <div class="col-md-12 text-center mt-4">
+        <button type="submit" id="submitSearch" class="button">Submit</button>
+      </div>
+      <!-- loading button needed -->
+    </form>
+
+
+    <div class="card-deck text-center p-3" id="resultCard"></div>
+
+    <!-- <footer class="bg-primary text-center">
       <p>This website collects data on what type of events you search for</p>
     </footer> -->
   </div>

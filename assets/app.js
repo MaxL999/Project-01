@@ -28,8 +28,16 @@ var proxyURL = "https://cors-anywhere.herokuapp.com/"
 
 // Search query URL built from info from submitData. API is from Eventful.com. 
 const createQueryURL = (info) => {
-  // console.log(info);
-  return `http://api.eventful.com/json/events/search?app_key=${API_KEY}&q=${info.category}&l=${info.location}&within=${info.radius}&t=future&c=${info.category}&page_size=25`;
+  console.log(info);
+  // &t=future
+  var string = `http://api.eventful.com/json/events/search?app_key=${API_KEY}`;
+  if (info.category) string += `&q=${info.category}`;
+  if (info.location) string += `&l=${info.location}`;
+  if (info.radius) string += `&within=${info.radius}`;
+  if (info.category) string += `&c=${info.category}`;
+  if (info.limit) string += `&page_size=${info.limit}`;
+  console.log(string)
+  return string;
 }
 
 
@@ -228,7 +236,6 @@ function searchEvents(data) {
 // when the page bootsup/loads/value changes the local variables update
 // records values for display
 database.ref().on("value", function (snapshot) {
-  console.log(snapshot.val())
   Food = snapshot.val().food
   Music = snapshot.val().music
   Comedy = snapshot.val().comedy
@@ -291,66 +298,72 @@ $(document).ready(function () {
       // Storing the search queries  
       var submitData = {
         category: $("#category option:selected").text().trim(),
-        location: $("#state").val().trim(),
+        location: $("#location").val().trim(),
         radius: $("#radius").val().trim(),
+        keyword: $("#keyword").val().trim(),
+        limit: $("#limit").val().trim(),
       }
 
       // Running the searchEvents function(passing search queries as arguments)      
       searchEvents(submitData);
 
-      // finds the chosen catagory and updates firebase           
-      if (submitData.category === "Food") {
-        Food++
-        database.ref().update({
-          food: Food
-        })
-      } else if (submitData.category === "Music") {
-        Music++
-        database.ref().update({
-          music: Music
-        })
-      } else if (submitData.category === "Comedy") {
-        Comedy++
-        database.ref().update({
-          comedy: Comedy
-        })
-      } else if (submitData.category === "Literature") {
-        Literature++
-        database.ref().update({
-          literature: Literature
-        })
-      } else if (submitData.category === "Art") {
-        Art++
-        database.ref().update({
-          art: Art
-        })
-      } else if (submitData.category === "Carnival") {
-        Carnival++
-        database.ref().update({
-          carnival: Carnival
-        })
-      } else if (submitData.category === "Cultural") {
-        Cultural++
-        database.ref().update({
-          cultural: Cultural
-        })
-      } else if (submitData.category === "TradeShow") {
-        TradeShow++
-        database.ref().update({
-          tradeShow: TradeShow
-        })
-      } else if (submitData.category === "Sports") {
-        Sports++
-        database.ref().update({
-          sports: Sports
-        })
-      } else {
-        //  console.log("firebase logic update error")
+      // finds the chosen catagory and updates firebase
+      switch (submitData.category) {
+        case "Food":
+          Food++
+          database.ref().update({
+            food: Food
+          })
+          break;
+        case "Music":
+          Music++
+          database.ref().update({
+            music: Music
+          })
+          break;
+        case "Comedy":
+          Comedy++
+          database.ref().update({
+            comedy: Comedy
+          })
+          break;
+        case "Literature":
+          Literature++
+          database.ref().update({
+            literature: Literature
+          })
+          break;
+        case "Art":
+          Art++
+          database.ref().update({
+            art: Art
+          })
+          break;
+        case "Carnival":
+          Carnival++
+          database.ref().update({
+            carnival: Carnival
+          })
+          break;
+        case "Cultural":
+          Cultural++
+          database.ref().update({
+            cultural: Cultural
+          })
+          break;
+        case "TradeShow":
+          TradeShow++
+          database.ref().update({
+            tradeShow: TradeShow
+          })
+          break;
+        case "Sports":
+          Sports++
+          database.ref().update({
+            sports: Sports
+          })
+          break;
       }
     }
   });
-
-
-
-
 });
